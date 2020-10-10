@@ -1,30 +1,30 @@
 {
   "files": {
-    "main.css": "/%7Bmists_puzzle%7D/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/%7Bmists_puzzle%7D/static/js/main.d1a6b455.chunk.js",
-    "main.js.map": "/%7Bmists_puzzle%7D/static/js/main.d1a6b455.chunk.js.map",
-    "runtime-main.js": "/%7Bmists_puzzle%7D/static/js/runtime-main.457746bf.js",
-    "runtime-main.js.map": "/%7Bmists_puzzle%7D/static/js/runtime-main.457746bf.js.map",
-    "static/js/2.90be143a.chunk.js": "/%7Bmists_puzzle%7D/static/js/2.90be143a.chunk.js",
-    "static/js/2.90be143a.chunk.js.map": "/%7Bmists_puzzle%7D/static/js/2.90be143a.chunk.js.map",
-    "index.html": "/%7Bmists_puzzle%7D/index.html",
-    "precache-manifest.be6ede5f0cf0882e7db2e2e82223684f.js": "/%7Bmists_puzzle%7D/precache-manifest.be6ede5f0cf0882e7db2e2e82223684f.js",
-    "service-worker.js": "/%7Bmists_puzzle%7D/service-worker.js",
-    "static/css/main.5ecd60fb.chunk.css.map": "/%7Bmists_puzzle%7D/static/css/main.5ecd60fb.chunk.css.map",
-    "static/js/2.90be143a.chunk.js.LICENSE.txt": "/%7Bmists_puzzle%7D/static/js/2.90be143a.chunk.js.LICENSE.txt",
-    "static/media/flower_full.b0a37842.svg": "/%7Bmists_puzzle%7D/static/media/flower_full.b0a37842.svg",
-    "static/media/flower_full_ring.af9e3a4a.svg": "/%7Bmists_puzzle%7D/static/media/flower_full_ring.af9e3a4a.svg",
-    "static/media/flower_outline.a833f1f7.svg": "/%7Bmists_puzzle%7D/static/media/flower_outline.a833f1f7.svg",
-    "static/media/flower_outline_ring.acbce660.svg": "/%7Bmists_puzzle%7D/static/media/flower_outline_ring.acbce660.svg",
-    "static/media/leaf_full.ce764217.svg": "/%7Bmists_puzzle%7D/static/media/leaf_full.ce764217.svg",
-    "static/media/leaf_full_ring.8e3d8318.svg": "/%7Bmists_puzzle%7D/static/media/leaf_full_ring.8e3d8318.svg",
-    "static/media/leaf_outline.f3883f73.svg": "/%7Bmists_puzzle%7D/static/media/leaf_outline.f3883f73.svg",
-    "static/media/leaf_outline_ring.69e3d23f.svg": "/%7Bmists_puzzle%7D/static/media/leaf_outline_ring.69e3d23f.svg"
+    "main.css": "/mists_puzzle/static/css/main.5ecd60fb.chunk.css",
+    "main.js": "/mists_puzzle/static/js/main.8fb2118a.chunk.js",
+    "main.js.map": "/mists_puzzle/static/js/main.8fb2118a.chunk.js.map",
+    "runtime-main.js": "/mists_puzzle/static/js/runtime-main.cd41d67c.js",
+    "runtime-main.js.map": "/mists_puzzle/static/js/runtime-main.cd41d67c.js.map",
+    "static/js/2.90be143a.chunk.js": "/mists_puzzle/static/js/2.90be143a.chunk.js",
+    "static/js/2.90be143a.chunk.js.map": "/mists_puzzle/static/js/2.90be143a.chunk.js.map",
+    "index.html": "/mists_puzzle/index.html",
+    "precache-manifest.3d0a0fb0d0f8131af456a5f0c00cd00d.js": "/mists_puzzle/precache-manifest.3d0a0fb0d0f8131af456a5f0c00cd00d.js",
+    "service-worker.js": "/mists_puzzle/service-worker.js",
+    "static/css/main.5ecd60fb.chunk.css.map": "/mists_puzzle/static/css/main.5ecd60fb.chunk.css.map",
+    "static/js/2.90be143a.chunk.js.LICENSE.txt": "/mists_puzzle/static/js/2.90be143a.chunk.js.LICENSE.txt",
+    "static/media/flower_full.b0a37842.svg": "/mists_puzzle/static/media/flower_full.b0a37842.svg",
+    "static/media/flower_full_ring.af9e3a4a.svg": "/mists_puzzle/static/media/flower_full_ring.af9e3a4a.svg",
+    "static/media/flower_outline.a833f1f7.svg": "/mists_puzzle/static/media/flower_outline.a833f1f7.svg",
+    "static/media/flower_outline_ring.acbce660.svg": "/mists_puzzle/static/media/flower_outline_ring.acbce660.svg",
+    "static/media/leaf_full.ce764217.svg": "/mists_puzzle/static/media/leaf_full.ce764217.svg",
+    "static/media/leaf_full_ring.8e3d8318.svg": "/mists_puzzle/static/media/leaf_full_ring.8e3d8318.svg",
+    "static/media/leaf_outline.f3883f73.svg": "/mists_puzzle/static/media/leaf_outline.f3883f73.svg",
+    "static/media/leaf_outline_ring.69e3d23f.svg": "/mists_puzzle/static/media/leaf_outline_ring.69e3d23f.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.457746bf.js",
+    "static/js/runtime-main.cd41d67c.js",
     "static/js/2.90be143a.chunk.js",
     "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.d1a6b455.chunk.js"
+    "static/js/main.8fb2118a.chunk.js"
   ]
 }
