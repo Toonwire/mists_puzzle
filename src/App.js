@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import MistIcon from './MistIcon';
 import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
 
 const possible = [
   {
@@ -127,11 +128,13 @@ function App() {
 
   return (
     <div>
-    {`Score: ${score}`} 
-    <Grid container spacing={3}>
+    <Box p={2}>
+      {`Score: ${score}`} 
+    </Box>
+    <Grid container style={{justifyContent: "space-around"}}>
       {randoms.map((random, index) => (
-        <Grid key={index} item xs={3}>
-          <IconButton onClick={() => handleClick(index)}>
+        <Grid key={index} item style={{textAlign: "center"}}>
+          <IconButton onClick={() => handleClick(index)} >
             <MistIcon shape={random.shape} filled={random.filled} ring={random.ring} />
           </IconButton>
         </Grid>
