@@ -1,9 +1,19 @@
 import React, { useState, useEffect } from 'react';
 
+import {makeStyles} from '@material-ui/core/styles';
 import MistIcon from './MistIcon';
 import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
+
+const useStyles = makeStyles((theme) => ({
+  visible: {
+  	visibility: "visible",
+  },
+  hidden: {
+  	visibility: "hidden",
+  }
+}));
 
 const possible = [
   {
@@ -108,9 +118,11 @@ const generateRandoms = () => {
 }
 
 function App() {
+  const classes = useStyles();
   const [randoms, setRandoms] = useState([]);
   const [score, setScore] = useState(0);
   const [correctIndex, setCorrectIndex] = useState(-1);
+  const [show, setShow] = useState(-1);
 
   useEffect(() => {
     const [newRandoms, newCorrectIndex] = generateRandoms();
@@ -125,21 +137,35 @@ function App() {
       setScore(0);
     }
   }
+  console.log(show)
+
 
   return (
     <div>
-    <Box p={2}>
-      {`Score: ${score}`} 
-    </Box>
-    <Grid container style={{justifyContent: "space-around"}}>
-      {randoms.map((random, index) => (
-        <Grid key={index} item style={{textAlign: "center"}}>
-          <IconButton onClick={() => handleClick(index)} >
-            <MistIcon shape={random.shape} filled={random.filled} ring={random.ring} />
-          </IconButton>
-        </Grid>
-      ))}
-    </Grid>
+      <Box p={2}>
+        {`Score: ${score}`} 
+      </Box>
+      <Grid container style={{justifyContent: "space-around"}}>
+        {randoms.map((random, index) => (
+          <Grid item key={index}  style={{textAlign: "center"}} >
+          	{show === index ? (
+          		<IconButton 
+	              onClick={() => handleClick(index)} 
+	              onMouseLeave={() => setShow(-1)}
+            	>
+	              <MistIcon shape={random.shape} filled={random.filled} ring={random.ring} />
+	            </IconButton>
+        	) : (<IconButton 
+	              onMouseEnter={() => setShow(index)}
+            	>
+            	<Box style={{width: 120, height: 120, background: "#bbdefb", borderRadius: "50%"}}></Box>
+	            </IconButton>
+	            )
+	        }
+            	
+          </Grid>
+        ))}
+      </Grid>
     </div>
   );
 }
