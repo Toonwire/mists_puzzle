@@ -12,6 +12,8 @@ import { ReactComponent as LeafFullRing } from './assets/leaf_full_ring.svg';
 import { ReactComponent as LeafOutline } from './assets/leaf_outline.svg';
 import { ReactComponent as LeafOutlineRing } from './assets/leaf_outline_ring.svg';
 
+import { ReactComponent as Symbol_000 } from './assets/000.PNG';
+
 
 const useStyles = makeStyles({
   svg: {
@@ -23,6 +25,7 @@ const useStyles = makeStyles({
 function MistIcon(props) {
   const { shape, filled, ring } = props;
   const classes = useStyles();
+
 
   let icon = <FlowerFull />;
   if (shape === "flower" && filled && !ring) icon = <FlowerFull />;
