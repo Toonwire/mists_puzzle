@@ -161,8 +161,7 @@ function App() {
           </Grid>
         ))}
       </Grid>
-      <Box display="flex" flexDirection="column" alignItems="center" width={400} m="auto" mb={5}>
-        <Typography variant="h6" gutterBottom>{`Score: ${score}`}</Typography>
+      <Box display="flex" flexDirection="column" alignItems="center" width={400} m="40px auto">
         {status === Status.CORRECT && <Alert severity="success">{Status.CORRECT.msg}</Alert>}
         {status === Status.WRONG && <Alert severity="error">{Status.WRONG.msg}</Alert>}
         {status === Status.DEFAULT && <Alert severity="info">{Status.DEFAULT.msg}</Alert>}
