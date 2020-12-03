@@ -1,21 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
-import MistIcon from './MistIcon';
+import { Grid, makeStyles } from '@material-ui/core';
 import MistSymbol from './MistSymbol';
-import IconButton from '@material-ui/core/IconButton';
-import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Alert from '@material-ui/lab/Alert';
 import Typography from '@material-ui/core/Typography';
-
-import Symbol000 from './assets/000.PNG';
-import Symbol001 from './assets/001.PNG';
-import Symbol010 from './assets/010.PNG';
-import Symbol011 from './assets/011.PNG';
-import Symbol100 from './assets/100.PNG';
-import Symbol101 from './assets/101.PNG';
-import Symbol110 from './assets/110.PNG';
-import Symbol111 from './assets/111.PNG';
 
 import LeafEmpty from './assets/LeafEmpty.png';
 import LeafFull from './assets/LeafFull.png';
@@ -26,8 +15,76 @@ import FlowerFull from './assets/FlowerFull.png';
 import CircledFlowerEmpty from './assets/CircledFlowerEmpty.png';
 import CircledFlowerFull from './assets/CircledFlowerFull.png';
 
-// const symbols = [Symbol000, Symbol001, Symbol010, Symbol011, Symbol100, Symbol101, Symbol110, Symbol111];
-const symbols = [LeafEmpty, LeafFull, CircledLeafEmpty, CircledLeafFull, FlowerEmpty, FlowerFull, CircledFlowerEmpty, CircledFlowerFull];
+const symbolMap = {
+  // [flower?, full?, ring?]
+  "0,0,0": LeafEmpty,
+  "0,1,0": LeafFull,
+  "0,0,1": CircledLeafEmpty,
+  "0,1,1": CircledLeafFull,
+  "1,0,0": FlowerEmpty,
+  "1,1,0": FlowerFull,
+  "1,0,1": CircledFlowerEmpty,
+  "1,1,1": CircledFlowerFull,
+};
+
+function k_combinations(set, k) {
+  let i, j, combs, head, tailcombs;
+
+  if (k > set.length || k <= 0) {
+    return [];
+  }
+
+  // K-sized set has only one K-sized subset.
+  if (k === set.length) {
+    return [set];
+  }
+
+  // There is N 1-sized subsets in a N-sized set.
+  if (k === 1) {
+    combs = [];
+    for (let i = 0; i < set.length; i++) {
+      combs.push([set[i]]);
+    }
+    return combs;
+  }
+
+  combs = [];
+  for (i = 0; i < set.length - k + 1; i++) {
+    head = set.slice(i, i + 1);
+    tailcombs = k_combinations(set.slice(i + 1), k - 1);
+    for (j = 0; j < tailcombs.length; j++) {
+      combs.push(head.concat(tailcombs[j]));
+    }
+  }
+  return combs;
+}
+
+let validCombinations = [];
+k_combinations(Object.keys(symbolMap), 4).forEach(combGroup => {
+  const combSet = combGroup.map(comb => comb.split(",").map(attrStr => Number(attrStr)));
+  let candidateIndex = -1;
+  let candidates = 0;
+  for (let attrIndex = 0; attrIndex < combSet[0].length; attrIndex++) {
+    const attrCol = combSet.map(comb => comb[attrIndex]);
+    const attrSum = attrCol.reduce((sum, attrVal) => sum + attrVal, 0);
+    if (attrSum === 1) {
+      // find the index that has 1 as attrVal
+      candidateIndex = attrCol.findIndex(attrVal => attrVal === 1);
+      candidates++;
+    } else if (attrSum === attrCol.length - 1) {
+      // find the index that has 0 as attrVal
+      candidateIndex = attrCol.findIndex(attrVal => attrVal === 0);
+      candidates++;
+    }
+  }
+
+  if (candidates === 1 && candidateIndex !== -1) {
+    validCombinations.push({
+      combination: combSet.map(comb => ({ data: comb, img: symbolMap[comb] })),
+      uniqueIndex: candidateIndex,
+    });
+  }
+});
 
 const combinations = [
   {
@@ -72,65 +129,6 @@ const combinations = [
   },
 ];
 
-const generateRandoms = () => {
-
-  let randoms = [];
-  let correctIndex = -1;
-
-  while (correctIndex === -1) {
-    let numFlowers = 0, numLeaves = 0;
-    let numFilled = 0, numOutlined = 0;
-    let numRings = 0, numNoRings = 0;
-
-    randoms = [];
-    for (let i = 0; i < 4; i++) {
-      const random = combinations[Math.floor(Math.random() * combinations.length)];
-      randoms.push(random);
-
-      if (random.shape === "flower") numFlowers++;
-      else if (random.shape === "leaf") numLeaves++;
-
-      if (random.filled) numFilled++;
-      else numOutlined++;
-
-      if (random.ring) numRings++;
-      else numNoRings++;
-    }
-
-    if (numFlowers === 1 && numLeaves !== 1
-      && numFilled !== 1 && numOutlined !== 1
-      && numRings !== 1 && numNoRings !== 1)
-      correctIndex = randoms.findIndex(random => random.shape === "flower");
-
-    else if (numFlowers !== 1 && numLeaves === 1
-      && numFilled !== 1 && numOutlined !== 1
-      && numRings !== 1 && numNoRings !== 1)
-      correctIndex = randoms.findIndex(random => random.shape === "leaf");
-
-    else if (numFlowers !== 1 && numLeaves !== 1
-      && numFilled === 1 && numOutlined !== 1
-      && numRings !== 1 && numNoRings !== 1)
-      correctIndex = randoms.findIndex(random => random.filled);
-
-    else if (numFlowers !== 1 && numLeaves !== 1
-      && numFilled !== 1 && numOutlined === 1
-      && numRings !== 1 && numNoRings !== 1)
-      correctIndex = randoms.findIndex(random => !random.filled);
-
-    else if (numFlowers !== 1 && numLeaves !== 1
-      && numFilled !== 1 && numOutlined !== 1
-      && numRings === 1 && numNoRings !== 1)
-      correctIndex = randoms.findIndex(random => random.ring);
-
-    else if (numFlowers !== 1 && numLeaves !== 1
-      && numFilled !== 1 && numOutlined !== 1
-      && numRings !== 1 && numNoRings === 1)
-      correctIndex = randoms.findIndex(random => !random.ring);
-  }
-
-  return [randoms, correctIndex];
-}
-
 const Status = {
   CORRECT: {
     msg: "Correct guess",
@@ -143,17 +141,34 @@ const Status = {
   },
 }
 
+const useStyles = makeStyles((theme) => ({
+  img: {
+    margin: "auto",
+    maxWidth: "100%",
+  },
+  symbolContainer: {
+    display: "flex",
+    width: 300,
+    height: 300,
+    minWidth: 300,
+    minHeight: 300,
+    borderRadius: "50%",
+    cursor: "pointer",
+  },
+  score: {
+    color: "#dedede",
+  }
+}));
+
 function App() {
-  const [randoms, setRandoms] = useState([]);
+  const classes = useStyles();
+  const [randomCombinationSet, setRandomCombinationSet] = useState();
   const [score, setScore] = useState(0);
-  const [correctIndex, setCorrectIndex] = useState(-1);
   const [show, setShow] = useState(-1);
   const [status, setStatus] = useState(Status.DEFAULT);
 
   useEffect(() => {
-    const [newRandoms, newCorrectIndex] = generateRandoms();
-    setRandoms(newRandoms);
-    setCorrectIndex(newCorrectIndex);
+    setRandomCombinationSet(validCombinations[Math.floor(Math.random() * validCombinations.length)]);
   }, [score]);
 
   useEffect(() => {
@@ -165,7 +180,7 @@ function App() {
   }, [status]);
 
   const handleClick = (index) => {
-    if (index === correctIndex) {
+    if (index === randomCombinationSet.uniqueIndex) {
       setScore(score + 1);
       setStatus(Status.CORRECT);
     } else {
@@ -174,77 +189,31 @@ function App() {
     }
   }
 
-  const padding = 4;
   return (
-    <Box display="flex" flexDirection="column" p={padding} style={{ backgroundColor: "#1e1e1e" }}>
-      <Box display="flex" flexDirection="row">
-        {randoms.map((random, index) => (
-          <Box
-            key={index}
-            display="flex"
-            m="auto"
-            width={1}
-            height={1}
-            minWidth={300}
-            minHeight={300}
-            borderRadius={"50%"}
-            bgcolor={show !== index ? "#bbdefb" : "inherit"}
-            onClick={() => handleClick(index)}
-            onMouseEnter={() => setShow(index)}
-            onMouseLeave={() => setShow(-1)}
-            style={{ cursor: "pointer" }}
-          >
-            {/* <MistSymbol shape={random.shape} filled={random.filled} ring={random.ring}
-              styles={{ margin: "auto", visibility: show === index ? "visible" : "hidden" }} /> */}
-
-            {random.shape === "flower" && random.filled && !random.ring
-              && <img src={FlowerFull} alt="FlowerFull" style={{ margin: "auto", visibility: show === index ? "visible" : "hidden" }} />}
-            {random.shape === "flower" && random.filled && random.ring
-              && <img src={CircledFlowerFull} alt="CircledFlowerFull" style={{ margin: "auto", visibility: show === index ? "visible" : "hidden" }} />}
-            {random.shape === "flower" && !random.filled && random.ring
-              && <img src={CircledFlowerEmpty} alt="CircledFlowerEmpty" style={{ margin: "auto", visibility: show === index ? "visible" : "hidden" }} />}
-            {random.shape === "flower" && !random.filled && !random.ring
-              && <img src={FlowerEmpty} alt="FlowerEmpty" style={{ margin: "auto", visibility: show === index ? "visible" : "hidden" }} />}
-
-            {random.shape === "leaf" && random.filled && !random.ring
-              && <img src={LeafFull} alt="LeafFull" style={{ margin: "auto", visibility: show === index ? "visible" : "hidden" }} />}
-            {random.shape === "leaf" && random.filled && random.ring
-              && <img src={CircledLeafFull} alt="CircledLeafFull" style={{ margin: "auto", visibility: show === index ? "visible" : "hidden" }} />}
-            {random.shape === "leaf" && !random.filled && random.ring
-              && <img src={CircledLeafEmpty} alt="CircledLeafEmpty" style={{ margin: "auto", visibility: show === index ? "visible" : "hidden" }} />}
-            {random.shape === "leaf" && !random.filled && !random.ring
-              && <img src={LeafEmpty} alt="LeafEmpty" style={{ margin: "auto", visibility: show === index ? "visible" : "hidden" }} />}
-
-          </Box>
+    <Box display="flex" flexDirection="column" p={4} style={{ backgroundColor: "#1e1e1e" }}>
+      <Grid container spacing={3} justify="center">
+        {randomCombinationSet && randomCombinationSet.combination.map((symbol, index) => (
+          <Grid item key={index}>
+            <Box className={classes.symbolContainer}
+              bgcolor={show !== index ? "#bbdefb" : "inherit"}
+              onClick={() => handleClick(index)}
+              onMouseEnter={() => setShow(index)}
+              onMouseLeave={() => setShow(-1)}
+            >
+              <MistSymbol src={symbol.img} className={classes.img} hidden={show !== index} />
+            </Box>
+          </Grid>
         ))}
-      </Box>
+      </Grid>
       <Box display="flex" flexDirection="column" alignItems="center" width={400} m="auto" mb={5}>
         <Typography variant="h6" gutterBottom>{`Score: ${score}`}</Typography>
         {status === Status.CORRECT && <Alert severity="success">{Status.CORRECT.msg}</Alert>}
         {status === Status.WRONG && <Alert severity="error">{Status.WRONG.msg}</Alert>}
         {status === Status.DEFAULT && <Alert severity="info">{Status.DEFAULT.msg}</Alert>}
       </Box>
-      {/* <Grid container style={{ justifyContent: "space-around" }}>
-        {randoms.map((random, index) => (
-          <Grid item key={index} style={{ textAlign: "center" }} >
-            {show === index ? (
-              <IconButton
-                onClick={() => handleClick(index)}
-                onMouseLeave={() => setShow(-1)}
-              >
-                <MistIcon shape={random.shape} filled={random.filled} ring={random.ring} />
-              </IconButton>
-            ) : (
-                <IconButton
-                  onMouseEnter={() => setShow(index)}
-                >
-                  <Box style={{ width: 120, height: 120, background: "#bbdefb", borderRadius: "50%" }}></Box>
-                </IconButton>
-              )
-            }
-          </Grid>
-        ))}
-      </Grid> */}
+      <Box display="flex" flexDirection="column" alignItems="center" color="#f2f2f2">
+        <Typography className={classes.score} variant="h4">{`Score: ${score}`}</Typography>
+      </Box>
     </Box>
   );
 }
