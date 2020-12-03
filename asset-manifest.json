@@ -1,30 +1,30 @@
 {
   "files": {
     "main.css": "/mists_puzzle/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/mists_puzzle/static/js/main.0cf42727.chunk.js",
-    "main.js.map": "/mists_puzzle/static/js/main.0cf42727.chunk.js.map",
+    "main.js": "/mists_puzzle/static/js/main.21d79ff1.chunk.js",
+    "main.js.map": "/mists_puzzle/static/js/main.21d79ff1.chunk.js.map",
     "runtime-main.js": "/mists_puzzle/static/js/runtime-main.cd41d67c.js",
     "runtime-main.js.map": "/mists_puzzle/static/js/runtime-main.cd41d67c.js.map",
-    "static/js/2.6e362843.chunk.js": "/mists_puzzle/static/js/2.6e362843.chunk.js",
-    "static/js/2.6e362843.chunk.js.map": "/mists_puzzle/static/js/2.6e362843.chunk.js.map",
+    "static/js/2.ec5d2b70.chunk.js": "/mists_puzzle/static/js/2.ec5d2b70.chunk.js",
+    "static/js/2.ec5d2b70.chunk.js.map": "/mists_puzzle/static/js/2.ec5d2b70.chunk.js.map",
     "index.html": "/mists_puzzle/index.html",
-    "precache-manifest.b32772eaae2b09de9f5fbcadc654322f.js": "/mists_puzzle/precache-manifest.b32772eaae2b09de9f5fbcadc654322f.js",
+    "precache-manifest.d78b2cf23e5b84ecf2830c33af592af5.js": "/mists_puzzle/precache-manifest.d78b2cf23e5b84ecf2830c33af592af5.js",
     "service-worker.js": "/mists_puzzle/service-worker.js",
     "static/css/main.5ecd60fb.chunk.css.map": "/mists_puzzle/static/css/main.5ecd60fb.chunk.css.map",
-    "static/js/2.6e362843.chunk.js.LICENSE.txt": "/mists_puzzle/static/js/2.6e362843.chunk.js.LICENSE.txt",
-    "static/media/flower_full.f6482284.svg": "/mists_puzzle/static/media/flower_full.f6482284.svg",
-    "static/media/flower_full_ring.a1bbfe0f.svg": "/mists_puzzle/static/media/flower_full_ring.a1bbfe0f.svg",
-    "static/media/flower_outline.e4088177.svg": "/mists_puzzle/static/media/flower_outline.e4088177.svg",
-    "static/media/flower_outline_ring.e3c7cc32.svg": "/mists_puzzle/static/media/flower_outline_ring.e3c7cc32.svg",
-    "static/media/leaf_full.676513f6.svg": "/mists_puzzle/static/media/leaf_full.676513f6.svg",
-    "static/media/leaf_full_ring.70b8b370.svg": "/mists_puzzle/static/media/leaf_full_ring.70b8b370.svg",
-    "static/media/leaf_outline.63287985.svg": "/mists_puzzle/static/media/leaf_outline.63287985.svg",
-    "static/media/leaf_outline_ring.e4b0141f.svg": "/mists_puzzle/static/media/leaf_outline_ring.e4b0141f.svg"
+    "static/js/2.ec5d2b70.chunk.js.LICENSE.txt": "/mists_puzzle/static/js/2.ec5d2b70.chunk.js.LICENSE.txt",
+    "static/media/CircledFlowerEmpty.png": "/mists_puzzle/static/media/CircledFlowerEmpty.f37a309d.png",
+    "static/media/CircledFlowerFull.png": "/mists_puzzle/static/media/CircledFlowerFull.dfd139c0.png",
+    "static/media/CircledLeafEmpty.png": "/mists_puzzle/static/media/CircledLeafEmpty.0656893d.png",
+    "static/media/CircledLeafFull.png": "/mists_puzzle/static/media/CircledLeafFull.2d6045fb.png",
+    "static/media/FlowerEmpty.png": "/mists_puzzle/static/media/FlowerEmpty.508aaf16.png",
+    "static/media/FlowerFull.png": "/mists_puzzle/static/media/FlowerFull.1d5cf613.png",
+    "static/media/LeafEmpty.png": "/mists_puzzle/static/media/LeafEmpty.a38170c5.png",
+    "static/media/LeafFull.png": "/mists_puzzle/static/media/LeafFull.e50c0522.png"
   },
   "entrypoints": [
     "static/js/runtime-main.cd41d67c.js",
-    "static/js/2.6e362843.chunk.js",
+    "static/js/2.ec5d2b70.chunk.js",
     "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.0cf42727.chunk.js"
+    "static/js/main.21d79ff1.chunk.js"
   ]
 }
