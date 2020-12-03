@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "45705c10233873228f77dc3eb91cfa0f",
+    "revision": "71ef5c9b5e1cb8578cdf182248845530",
     "url": "/mists_puzzle/index.html"
   },
   {
-    "revision": "04f31f0365ac374d5958",
+    "revision": "42211029e55c813c65a4",
     "url": "/mists_puzzle/static/css/main.5ecd60fb.chunk.css"
   },
   {
-    "revision": "36ed307907ea061f670b",
-    "url": "/mists_puzzle/static/js/2.ec5d2b70.chunk.js"
+    "revision": "de002cca4c79a6436cc6",
+    "url": "/mists_puzzle/static/js/2.05430d42.chunk.js"
   },
   {
     "revision": "0749163b59fbee32225059cb60c18af6",
-    "url": "/mists_puzzle/static/js/2.ec5d2b70.chunk.js.LICENSE.txt"
+    "url": "/mists_puzzle/static/js/2.05430d42.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "04f31f0365ac374d5958",
-    "url": "/mists_puzzle/static/js/main.21d79ff1.chunk.js"
+    "revision": "42211029e55c813c65a4",
+    "url": "/mists_puzzle/static/js/main.c8b9e9ed.chunk.js"
   },
   {
     "revision": "dfba6e11b6648ea7c27f",
