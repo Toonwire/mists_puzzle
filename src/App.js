@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
 import { Grid, makeStyles } from '@material-ui/core';
-import MistSymbol from './MistSymbol';
 import Box from '@material-ui/core/Box';
 import Alert from '@material-ui/lab/Alert';
 import Typography from '@material-ui/core/Typography';
@@ -86,55 +85,12 @@ k_combinations(Object.keys(symbolMap), 4).forEach(combGroup => {
   }
 });
 
-const combinations = [
-  {
-    shape: "flower",
-    filled: true,
-    ring: true,
-  },
-  {
-    shape: "flower",
-    filled: true,
-    ring: false,
-  },
-  {
-    shape: "flower",
-    filled: false,
-    ring: true,
-  },
-  {
-    shape: "flower",
-    filled: false,
-    ring: false,
-  },
-  {
-    shape: "leaf",
-    filled: true,
-    ring: true,
-  },
-  {
-    shape: "leaf",
-    filled: true,
-    ring: false,
-  },
-  {
-    shape: "leaf",
-    filled: false,
-    ring: true,
-  },
-  {
-    shape: "leaf",
-    filled: false,
-    ring: false,
-  },
-];
-
 const Status = {
   CORRECT: {
-    msg: "Correct guess",
+    msg: "Correct!",
   },
   WRONG: {
-    msg: "Wrong guess",
+    msg: "Wrong symbol",
   },
   DEFAULT: {
     msg: "Find the odd one out!",
@@ -200,7 +156,7 @@ function App() {
               onMouseEnter={() => setShow(index)}
               onMouseLeave={() => setShow(-1)}
             >
-              <MistSymbol src={symbol.img} className={classes.img} hidden={show !== index} />
+              <img src={symbol.img} alt="mists_symbol" className={classes.img} hidden={show !== index} />
             </Box>
           </Grid>
         ))}
