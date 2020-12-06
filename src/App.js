@@ -4,6 +4,9 @@ import { Grid, makeStyles } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import Alert from '@material-ui/lab/Alert';
 import Typography from '@material-ui/core/Typography';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch';
 
 import LeafEmpty from './assets/LeafEmpty.png';
 import LeafFull from './assets/LeafFull.png';
@@ -113,15 +116,38 @@ const useStyles = makeStyles((theme) => ({
   },
   score: {
     color: "#dedede",
-  }
+  },
+  highlightScale: {
+    "&:hover": {
+      transform: "scale(1.1)",
+    },
+  },
 }));
+
+const MistSymbol = (props) => {
+  const { classes, src, onClick, withMist } = props;
+  const [hovered, setHovered] = useState(false);
+  return (
+    <Box className={classes.symbolContainer}
+      bgcolor={withMist && !hovered ? "#bbdefb" : "inherit"}
+      onClick={onClick}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <img src={src} alt="mists_symbol"
+        className={`${classes.img} ${!withMist ? classes.highlightScale : null}`}
+        hidden={withMist && !hovered}
+      />
+    </Box>
+  )
+}
 
 function App() {
   const classes = useStyles();
   const [randomCombinationSet, setRandomCombinationSet] = useState();
   const [score, setScore] = useState(0);
-  const [show, setShow] = useState(-1);
   const [status, setStatus] = useState(Status.DEFAULT);
+  const [withMist, setWithMist] = useState(true);
 
   useEffect(() => {
     setRandomCombinationSet(validCombinations[Math.floor(Math.random() * validCombinations.length)]);
@@ -150,14 +176,7 @@ function App() {
       <Grid container spacing={3} justify="center">
         {randomCombinationSet && randomCombinationSet.combination.map((symbol, index) => (
           <Grid item key={index}>
-            <Box className={classes.symbolContainer}
-              bgcolor={show !== index ? "#bbdefb" : "inherit"}
-              onClick={() => handleClick(index)}
-              onMouseEnter={() => setShow(index)}
-              onMouseLeave={() => setShow(-1)}
-            >
-              <img src={symbol.img} alt="mists_symbol" className={classes.img} hidden={show !== index} />
-            </Box>
+            <MistSymbol src={symbol.img} withMist={withMist} onClick={() => handleClick(index)} classes={classes} />
           </Grid>
         ))}
       </Grid>
@@ -168,6 +187,12 @@ function App() {
       </Box>
       <Box display="flex" flexDirection="column" alignItems="center" color="#f2f2f2">
         <Typography className={classes.score} variant="h4">{`Score: ${score}`}</Typography>
+        <FormGroup row>
+          <FormControlLabel
+            label="Toggle mist"
+            control={<Switch checked={withMist} onChange={() => setWithMist(!withMist)} />}
+          />
+        </FormGroup>
       </Box>
     </Box>
   );
