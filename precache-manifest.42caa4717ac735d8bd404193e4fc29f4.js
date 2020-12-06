@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "71ef5c9b5e1cb8578cdf182248845530",
+    "revision": "7c99e4e6b18786522e654358a3b3a712",
     "url": "/mists_puzzle/index.html"
   },
   {
-    "revision": "42211029e55c813c65a4",
-    "url": "/mists_puzzle/static/css/main.5ecd60fb.chunk.css"
+    "revision": "0d531d42e37fa487f2e8",
+    "url": "/mists_puzzle/static/css/main.69eda509.chunk.css"
   },
   {
-    "revision": "de002cca4c79a6436cc6",
-    "url": "/mists_puzzle/static/js/2.05430d42.chunk.js"
+    "revision": "3768b91bcd7e85a8b834",
+    "url": "/mists_puzzle/static/js/2.c5151698.chunk.js"
   },
   {
     "revision": "0749163b59fbee32225059cb60c18af6",
-    "url": "/mists_puzzle/static/js/2.05430d42.chunk.js.LICENSE.txt"
+    "url": "/mists_puzzle/static/js/2.c5151698.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "42211029e55c813c65a4",
-    "url": "/mists_puzzle/static/js/main.c8b9e9ed.chunk.js"
+    "revision": "0d531d42e37fa487f2e8",
+    "url": "/mists_puzzle/static/js/main.f9216ef4.chunk.js"
   },
   {
     "revision": "dfba6e11b6648ea7c27f",
